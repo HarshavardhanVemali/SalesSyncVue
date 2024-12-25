@@ -1,3 +1,16 @@
 [build]
   command = "npm run build"  # your build command
   publish = "dist"  # your publish directory
+
+[[redirects]]
+   from = "/api/*"
+   to = "https://salessyncpython.onrender.com/:splat"
+   status = 200
+   force = true
+
+[[headers]]
+# Define which paths this header config applies to
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY" 
+
