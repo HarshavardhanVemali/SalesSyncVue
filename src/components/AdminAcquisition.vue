@@ -650,7 +650,7 @@ export default {
             const formData = new FormData();
             formData.append('excelFile', file);
             try {
-              const response = await axios.post('http://127.0.0.1:8000/import_excel_data/',formData,{
+              const response = await axios.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/import_excel_data/',formData,{
                   headers: {
                         'Content-Type': 'multipart/form-data',
                         'X-CSRFToken': getCookie('csrftoken') 

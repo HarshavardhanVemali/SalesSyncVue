@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app',
     withCredentials:true, // this helps the browser to send cookies in the header
     headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
         try {
-            const response = await axios.post('http://localhost:8000/api/token/refresh/', {
+            const response = await axios.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/api/token/refresh/', {
                 refresh: refreshToken,
             });
 
