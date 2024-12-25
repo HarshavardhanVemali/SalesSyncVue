@@ -6,3 +6,17 @@ publish = "dist"
 from = "/*"
 to = "/index.html"
 status = 200
+
+# Add specific redirect rule for API requests to your Django backend
+[[redirects]]
+from = "/adminlogin/*"
+to = "https://salessyncpython.onrender.com/adminlogin/:splat"
+status = 200
+force = true
+
+# Example: Add more API redirect rules if needed
+[[redirects]]
+from = "/api/*"
+to = "https://salessyncpython.onrender.com/api/:splat"
+status = 200
+force = true
