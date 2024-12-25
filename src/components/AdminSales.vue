@@ -375,7 +375,7 @@ export default {
         async fetchReports() {
             this.isLoading=true;
             try {
-                const response = await axios.get('http://127.0.0.1:8000/getreports/');
+                const response = await axios.get('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/getreports/');
                 this.orders = response.data.orders;
                 this.showAddPayment = this.orders.map(() => false);
                 this.newPayments = this.orders.map(() => ({
@@ -404,7 +404,7 @@ export default {
         },
         async submitPayment(orderIndex) {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/addpayment/', {
+                const response = await axios.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/addpayment/', {
                 bill_no: this.orders[orderIndex].bill_no,
                 payment_date: this.newPayments[orderIndex].payment_date,
                 paid_amount: this.newPayments[orderIndex].paid_amount,
@@ -444,7 +444,7 @@ export default {
             if (!isValid) return;
 
             try {
-                const response = await axios.post('http://127.0.0.1:8000/addreport/', {
+                const response = await axios.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/addreport/', {
                     customername: this.customername,
                     customermobile: this.customermobile,
                     customerarea: this.customerarea,
