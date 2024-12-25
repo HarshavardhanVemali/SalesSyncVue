@@ -59,7 +59,7 @@
             },
             async submitLogin() {
                 try {
-                    const response = await api.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/adminlogin/', {
+                    const response = await api.post('https://salessyncpython.onrender.com/adminlogin/', {
                         username: this.username,
                         password: this.password,
                         remember_me: this.rememberMe
