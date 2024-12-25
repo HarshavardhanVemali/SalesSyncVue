@@ -59,7 +59,7 @@
             },
             async submitLogin() {
                 try {
-                    const response = await api.post('https://salessyncpython.onrender.com/adminlogin/', {
+                    const response = await api.post('/adminlogin/', {
                         username: this.username,
                         password: this.password,
                         remember_me: this.rememberMe

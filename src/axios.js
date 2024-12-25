@@ -2,7 +2,7 @@ import axios from 'axios';
 import router from './router' 
 
 const api = axios.create({
-    baseURL :process.env.VUE_APP_BACKEND_URL || 'https://salessyncpython.onrender.com',
+    baseURL: process.env.VUE_APP_BACKEND_URL || '/api',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
