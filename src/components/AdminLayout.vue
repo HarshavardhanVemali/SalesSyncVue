@@ -165,8 +165,8 @@ export default {
     },
     async logout() {
       try {
-        await api.get('https://salessyncpython.onrender.com/logout_admin/');
-
+        
+await api.get('/api/logout_admin/');
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         this.$router.push('/adminlogin');
