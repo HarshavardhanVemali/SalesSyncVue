@@ -19,7 +19,6 @@ api.interceptors.request.use((config) => {
 });
 
 
-// Response interceptor to handle token expiration
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -37,12 +36,12 @@ api.interceptors.response.use(
             const newToken = response.data.access;
             localStorage.setItem('access_token', newToken);
             originalRequest.headers.Authorization = `Bearer ${newToken}`;
-            return api(originalRequest); // Retry the original request with the new token
+            return api(originalRequest); 
         } catch (refreshError) {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
             router.push('/adminlogin');
-            return Promise.reject(refreshError); // If refresh fails, log the user out and redirect them
+            return Promise.reject(refreshError);
         }
         } else {
             localStorage.removeItem('access_token');

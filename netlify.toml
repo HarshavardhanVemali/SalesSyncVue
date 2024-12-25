@@ -1,23 +1,15 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "npm run build"  # your build command
+  publish = "dist"  # your publish directory
 
-# SPA redirect rule for all frontend routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[headers]]
+# Define which paths this header config applies to
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY" #Example Security Header
 
-# Redirect for admin login API requests to your backend on Render
 [[redirects]]
-  from = "/adminlogin/*"
-  to = "https://salessyncpython.onrender.com/adminlogin/:splat"
-  status = 200
-  force = true
-
-# Redirect for general API requests to your backend on Render
-[[redirects]]
-  from = "/api/*"
-  to = "https://salessyncpython.onrender.com/api/:splat"
-  status = 200
-  force = true
+   from = "/api/*"
+   to = "https://salessyncpython.onrender.com/api/:splat"
+   status = 200
+   force = true
