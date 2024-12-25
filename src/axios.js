@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app',
-    withCredentials:true, // this helps the browser to send cookies in the header
+    baseURL: 'https://salessyncpython.onrender.com',
+    withCredentials:true, 
     headers: {
         'Content-Type': 'application/json',
     },
@@ -30,7 +30,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
         try {
-            const response = await axios.post('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/api/token/refresh/', {
+            const response = await axios.post('https://salessyncpython.onrender.com', {
                 refresh: refreshToken,
             });
 
