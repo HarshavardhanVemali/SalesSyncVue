@@ -165,7 +165,7 @@ export default {
     },
     async logout() {
       try {
-        await api.get('/logout_admin/');
+        await api.get('https://6c43-2405-201-c026-70ef-69e4-42d1-4975-4792.ngrok-free.app/logout_admin/');
 
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
