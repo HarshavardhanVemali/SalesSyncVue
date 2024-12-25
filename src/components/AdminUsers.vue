@@ -181,7 +181,7 @@ export default {
         async fetchUserDetails() {
             this.isLoading = true;
             try {
-                const response = await axios.get('/api/getuserdetails/', {
+                const response = await axios.get('https://salessyncpython.onrender.com/getuserdetails/', {
                 headers: {
                     'X-CSRFToken': this.getCookie('csrftoken'),
                     'Content-Type': 'application/json'
@@ -214,7 +214,7 @@ export default {
             this.generalError = null;
             this.isLoading = true;
             try {
-                const response = await axios.post('/api/adduser/', {
+                const response = await axios.post('https://salessyncpython.onrender.com/adduser/', {
                 username: this.username,
                 useremail: this.useremail,
                 userpassword: this.userpassword,
@@ -270,7 +270,7 @@ export default {
         async resetPassword(user) { 
             this.isLoading = true;
             try {
-                const response = await axios.post('/api/resetpassword/', {  
+                const response = await axios.post('https://salessyncpython.onrender.com/resetpassword/', {  
                     userId: user
                 }, {
                     headers: {
@@ -297,7 +297,7 @@ export default {
         async sendUpdateToServer(user){
             this.isLoading = true;
             try {
-            const response = await axios.post('/api/updateusertype/', {
+            const response = await axios.post('https://salessyncpython.onrender.com/updateusertype/', {
                 userId: user.email,
                 newType: user.user_type
             }, {
@@ -397,7 +397,7 @@ export default {
                 this.isLoading = true;
                 try {
                     document.getElementById('delete-overlay').style.display = 'none';
-                    const response = await axios.post('/api/deleteusers/', {
+                    const response = await axios.post('https://salessyncpython.onrender.com/deleteusers/', {
                         user_ids: this.selectedUserIds
                     }, {
                         headers: {
