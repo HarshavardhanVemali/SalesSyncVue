@@ -1,1 +1,6 @@
+# Redirect all other requests to the SPA frontend (index.html)
+# This is for handling regular frontend routes in your Vue app
 /*  /index.html   200
+
+# Add specific redirect rule for API requests to Django backend
+/adminlogin/*  https://salessyncpython.onrender.com/adminlogin/:splat  200
