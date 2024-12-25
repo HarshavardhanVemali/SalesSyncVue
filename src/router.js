@@ -27,10 +27,6 @@ const routes = [
     redirect: '/admin/dashboard',
   },
   {
-    path:'adminlogin',
-    redirect:'https://salessyncpython.onrender.com/adminlogin/',
-  },
-  {
     path: '/sales',
     redirect: '/admin/sales',
   },
