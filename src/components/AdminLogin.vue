@@ -34,7 +34,7 @@
 </template>
     
 <script>
-    import api from '../axios'; // Import the axios instance
+    import api from '../axios'; 
 
     export default {
         data() {

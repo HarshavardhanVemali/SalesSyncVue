@@ -1,15 +1,15 @@
 import axios from 'axios';
+import router from './router' 
 
 const api = axios.create({
     baseURL: 'https://salessyncpython.onrender.com',
-    withCredentials:true, 
+    withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
 
-// Add a request interceptor to include the token
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('access_token');
     if (token) {
@@ -24,13 +24,13 @@ api.interceptors.response.use(
     (response) => response,
     async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
 
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
         try {
-            const response = await axios.post('https://salessyncpython.onrender.com', {
+            const response = await axios.post('https://salessyncpython.onrender.com/token/refresh/', {
                 refresh: refreshToken,
             });
 
@@ -41,15 +41,13 @@ api.interceptors.response.use(
         } catch (refreshError) {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
-            window.location.href = '/adminlogin'
-
+            router.push('/adminlogin');
             return Promise.reject(refreshError); // If refresh fails, log the user out and redirect them
         }
         } else {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
-             window.location.href = '/adminlogin'
-
+            router.push('/adminlogin');
         }
     }
         return Promise.reject(error);
