@@ -375,7 +375,7 @@ export default {
         async fetchReports() {
             this.isLoading=true;
             try {
-                const response = await axios.get('https://salessyncpython.onrender.com/getreports/');
+                const response = await axios.get('/api/getreports/');
                 this.orders = response.data.orders;
                 this.showAddPayment = this.orders.map(() => false);
                 this.newPayments = this.orders.map(() => ({
@@ -404,7 +404,7 @@ export default {
         },
         async submitPayment(orderIndex) {
             try {
-                const response = await axios.post('https://salessyncpython.onrender.com/addpayment/', {
+                const response = await axios.post('/api/addpayment/', {
                 bill_no: this.orders[orderIndex].bill_no,
                 payment_date: this.newPayments[orderIndex].payment_date,
                 paid_amount: this.newPayments[orderIndex].paid_amount,
@@ -444,7 +444,7 @@ export default {
             if (!isValid) return;
 
             try {
-                const response = await axios.post('https://salessyncpython.onrender.com/addreport/', {
+                const response = await axios.post('/api/addreport/', {
                     customername: this.customername,
                     customermobile: this.customermobile,
                     customerarea: this.customerarea,
@@ -495,7 +495,7 @@ export default {
                 let filename;
                 let date= new Date();
                 if (this.ledgerformat === 'pdf') {
-                    response = await axios.post('https://salessyncpython.onrender.com/generateledger/', postData, { 
+                    response = await axios.post('/api/generateledger/', postData, { 
                         headers: {
                             'X-CSRFToken': getCookie('csrftoken'),
                             'Content-Type': 'application/json'
@@ -505,7 +505,7 @@ export default {
                     });
                     filename = `${this.customermobilenumber_ledger}_${date}_ledger.pdf`;
                 } else if (this.ledgerformat === 'excel') {
-                    response = await axios.post('https://salessyncpython.onrender.com/generate_excel_ledger/',postData, { 
+                    response = await axios.post('/api//generate_excel_ledger/',postData, { 
                         headers: {
                             'X-CSRFToken': getCookie('csrftoken'),
                             'Content-Type': 'application/json'
@@ -634,7 +634,7 @@ export default {
             const formData = new FormData();
             formData.append('excelFile', file);
             try {
-              const response = await axios.post('https://salessyncpython.onrender.com/import_excel_data/',formData,{
+              const response = await axios.post('/api/import_excel_data/',formData,{
                   headers: {
                         'Content-Type': 'multipart/form-data',
                         'X-CSRFToken': getCookie('csrftoken') 
